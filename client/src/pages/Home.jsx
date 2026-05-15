@@ -41,34 +41,30 @@ function Home() {
             </div>
           </div>
 
-          <div className="text-center mb-28">
+          <div className="text-center mb-16 sm:mb-28">
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="text-4xl md:text-6xl font-semibold leading-tight max-w-4xl mx-auto">
+              className="text-3xl sm:text-4xl md:text-6xl font-semibold leading-tight max-w-4xl mx-auto px-4">
               Practice Interview with
-              <span className="relative inline-block">
-                <span className="bg-green-100 text-green-600 px-5 py-1 rounded-full">
+              <span className="relative inline-block mt-2 sm:mt-0">
+                <span className="bg-green-100 text-green-600 px-3 sm:px-5 py-1 rounded-full whitespace-nowrap">
                   AI Intelligence
-
                 </span>
               </span>
-
             </motion.h1>
 
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8 }}
-              className="text-gray-500 mt-6 max-w-2xl mx-auto text-lg">
+              className="text-gray-500 mt-6 max-w-2xl mx-auto text-base sm:text-lg px-6">
               Role-based mock interviews with smart follow-ups,
               adaptive difficulty and real-time performance
               evaluation.
-
             </motion.p>
-            <div className="flex flex-wrap justify-center gap-4 mt-10">
-
+            <div className="flex flex-col sm:flex-row justify-center gap-4 mt-10 px-6">
               <motion.button
                 onClick={() => {
                   if (!userData) {
@@ -79,10 +75,8 @@ function Home() {
                 }}
                 whileHover={{ opacity: 0.9, scale: 1.03 }}
                 whileTap={{ opacity: 1, scale: 0.98 }}
-                className="bg-black text-white px-10 py-3 rounded-full
-    hover:opacity-90 transition shadow-md">
+                className="bg-black text-white px-8 sm:px-10 py-3 rounded-full hover:opacity-90 transition shadow-md w-full sm:w-auto font-semibold">
                 Start Interview
-
               </motion.button>
               <motion.button
                 onClick={() => {
@@ -94,21 +88,14 @@ function Home() {
                 }}
                 whileHover={{ opacity: 0.9, scale: 1.03 }}
                 whileTap={{ opacity: 1, scale: 0.98 }}
-                className="border border-gray-300 px-10 py-3 rounded-full hover:bg-gray-100 transition">
+                className="border border-gray-300 px-8 sm:px-10 py-3 rounded-full hover:bg-gray-100 transition w-full sm:w-auto font-semibold bg-white">
                 View History
-
               </motion.button>
-
             </div>
           </div>
 
-
-
-
-          {/* {showAuth && <AuthModel onClose={() => setShowAuth(false)} />} */}
-
           <div
-            className="flex flex-col md:flex-row justify-center items-center gap-10 mb-28">
+            className="flex flex-col md:flex-row justify-center items-center gap-12 sm:gap-10 mb-20 sm:mb-28 px-4">
             {
               [
                 {
@@ -138,47 +125,43 @@ function Home() {
                   className={
                     `
                  relative bg-white rounded-3xl border-2 border-green-100
-      hover:border-green-500 p-10 w-80 max-w-[90%] shadow-md
+      hover:border-green-500 p-8 sm:p-10 w-full sm:w-80 shadow-md
       hover:shadow-2xl
       transition-all duration-300
-      ${index === 0 ? "rotate-[-4deg]" : ""}
-      ${index === 1 ? "rotate-[3deg] md:-mt-6 shadow-xl" : ""}
-      ${index === 2 ? "rotate-[-3deg]" : ""}`
+      ${index === 0 ? "md:rotate-[-4deg]" : ""}
+      ${index === 1 ? "md:rotate-[3deg] md:-mt-6 shadow-xl" : ""}
+      ${index === 2 ? "md:rotate-[-3deg]" : ""}`
                   }>
 
                   <div
-                    className="absolute -top-8 left-1/2 -translate-x-1/2 bg-white border-2 border-green-500 text-green-600 w-16 rounded-2xl flex items-center justify-center shadow-lg">
+                    className="absolute -top-8 left-1/2 -translate-x-1/2 bg-white border-2 border-green-500 text-green-600 w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg">
                     {item.icon}
 
                   </div>
-                  <div className="pt-10 text-center">
-                    <div className="text-xs text-green-600 font-semibold mb-2 tracking-wider">{item.step}</div>
-                    <h3 className="font-semibold mb-3 text-lg">{item.title}</h3>
-                    <p className="text-sm text-gray-500 leading-relaxed">{item.desc}</p>
+                  <div className="pt-8 sm:pt-10 text-center">
+                    <div className="text-xs text-green-600 font-bold mb-2 tracking-wider">{item.step}</div>
+                    <h3 className="font-bold mb-3 text-lg text-gray-800">{item.title}</h3>
+                    <p className="text-sm text-gray-500 leading-relaxed font-medium">{item.desc}</p>
 
                   </div>
 
                 </motion.div>
               ))
             }
-
-
           </div>
 
-          <div className="mb-32">
+          <div className="mb-20 sm:mb-32 px-4">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className='text-4xl font-semibold text-center mb-16'
+              className='text-3xl sm:text-4xl font-bold text-center mb-12 sm:mb-16'
             >
               Advanced AI{" "}
               <span className='text-green-600'>Capabilities</span>
-
-
             </motion.h2>
 
-            <div className="grid md:grid-cols-2 gap-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10">
               {
                 [
                   {
@@ -213,49 +196,40 @@ function Home() {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
                     whileHover={{ scale: 1.02 }}
-                    className="bg-white border border-gray-200 rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all"
+                    className="bg-white border border-gray-200 rounded-3xl p-6 sm:p-8 shadow-sm hover:shadow-xl transition-all"
                   >
-                    <div className="flex flex-col md:flex-row items-center gap-8">
-                      <div className="w-full md:w-1/2 flex justify-center">
+                    <div className="flex flex-col sm:flex-row items-center gap-6 sm:gap-8">
+                      <div className="w-full sm:w-1/2 flex justify-center">
                         <img src={item.image} alt={item.title}
-                          className="w-full h-auto object-contain max-h-64"
+                          className="w-full h-auto object-contain max-h-48 sm:max-h-64"
                         ></img>
-
                       </div>
-                      <div className="w-full md:w-1/2">
-                        <div className="bg-green-50 text-green-600 w-12 h-12 rounded-xl flex items-center justify-center mb-6">
+                      <div className="w-full sm:w-1/2 text-center sm:text-left">
+                        <div className="bg-green-50 text-green-600 w-12 h-12 rounded-xl flex items-center justify-center mb-4 sm:mb-6 mx-auto sm:mx-0">
                           {item.icon}
-
                         </div>
-                        <h3 className="font-semibold mb-3 text-xl">{item.title}</h3>
-                        <p className="text-gray-500 text-sm leading-relaxed">{item.desc}</p>
-
+                        <h3 className="font-bold mb-3 text-lg sm:text-xl text-gray-800">{item.title}</h3>
+                        <p className="text-gray-500 text-sm leading-relaxed font-medium">{item.desc}</p>
                       </div>
-
                     </div>
-
                   </motion.div>
                 ))
               }
-
             </div>
-
           </div>
 
-          <div className="mb-32">
+          <div className="mb-20 sm:mb-32 px-4">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className='text-4xl font-semibold text-center mb-16'
+              className='text-3xl sm:text-4xl font-bold text-center mb-12 sm:mb-16'
             >
               Multiple Interview{" "}
               <span className='text-green-600'>Modes</span>
-
-
             </motion.h2>
 
-            <div className="grid md:grid-cols-2 gap-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10">
               {
                 [
                   {
@@ -287,39 +261,29 @@ function Home() {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
                     whileHover={{ y: -6 }}
-                    className="bg-white border border-gray-200 rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all"
+                    className="bg-white border border-gray-200 rounded-3xl p-6 sm:p-8 shadow-sm hover:shadow-xl transition-all"
                   >
-                    <div className="flex justify-between items-center gap-6">
-                      <div className="w-1/2">
-                        <h3 className="font-semibold text-xl mb-3">
+                    <div className="flex flex-col sm:flex-row justify-between items-center gap-6 text-center sm:text-left">
+                      <div className="w-full sm:w-1/2">
+                        <h3 className="font-bold text-lg sm:text-xl mb-3 text-gray-800">
                           {mode.title}
-
                         </h3>
-                        <p className="text-gray-500 text-sm leading-relaxed">
+                        <p className="text-gray-500 text-sm leading-relaxed font-medium">
                           {mode.desc}
                         </p>
                       </div>
-
-
-                      {/* right image */}
-                      <div className="w-1/2 flex justify-end">
+                      <div className="w-full sm:w-1/2 flex justify-center sm:justify-end">
                         <img
                           src={mode.img}
                           alt={mode.title}
-                          className="w-28 h-28 object-contain"
+                          className="w-24 h-24 sm:w-28 sm:h-28 object-contain"
                         ></img>
                       </div>
-
-
-
                     </div>
-
                   </motion.div>
                 ))
               }
-
             </div>
-
           </div>
 
 

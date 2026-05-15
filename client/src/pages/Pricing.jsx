@@ -63,12 +63,12 @@ function Pricing() {
 
 
   return (
-    <div className='min-h-screen bg-[#f8fafc] py-12 px-6 relative overflow-hidden'>
+    <div className='min-h-screen bg-[#f8fafc] py-8 sm:py-12 px-4 sm:px-6 relative overflow-hidden'>
       {/* Background Decorative Elements - Subtle */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[400px] bg-gradient-to-b from-emerald-50/40 to-transparent pointer-events-none"></div>
 
-      <div className='max-w-6xl mx-auto mb-10 relative'>
-        <div className="flex items-center gap-6 mb-6">
+      <div className='max-w-6xl mx-auto mb-8 sm:mb-10 relative'>
+        <div className="flex items-center gap-4 sm:gap-6 mb-6">
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -80,11 +80,11 @@ function Pricing() {
           <div className="h-px flex-1 bg-gray-200/50 hidden sm:block"></div>
         </div>
 
-        <div className="text-center space-y-2">
+        <div className="text-center space-y-2 px-4">
           <motion.h1 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="text-3xl md:text-4xl font-black text-gray-900 tracking-tight"
+            className="text-3xl sm:text-4xl font-black text-gray-900 tracking-tight"
           >
             Choose Your <span className="text-emerald-600">Plan</span>
           </motion.h1>
@@ -93,14 +93,14 @@ function Pricing() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.1 }}
-            className="text-gray-500 max-w-xl mx-auto text-base font-medium"
+            className="text-sm sm:text-base text-gray-500 max-w-xl mx-auto font-medium leading-relaxed"
           >
             Simple credit packs for your interview preparation.
           </motion.p>
         </div>
       </div>
 
-      <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto relative items-stretch'>
+      <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto relative items-stretch'>
         {plans.map((plan, index) => {
           const isSelected = selectedPlan === plan.id
 
@@ -112,7 +112,7 @@ function Pricing() {
               transition={{ delay: index * 0.05 }}
               whileHover={{ scale: 1.01 }}
               onClick={() => setSelectedPlan(plan.id)}
-              className={`relative flex flex-col rounded-[1.5rem] p-7 transition-all duration-300 border-2 cursor-pointer
+              className={`relative flex flex-col rounded-[1.5rem] sm:rounded-[2rem] p-6 sm:p-8 transition-all duration-300 border-2 cursor-pointer
                 ${isSelected
                   ? "border-emerald-500 shadow-xl bg-white z-10"
                   : "border-transparent bg-white shadow-lg shadow-gray-200/40 hover:border-gray-200"

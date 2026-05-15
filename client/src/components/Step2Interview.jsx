@@ -415,12 +415,12 @@ function Step2Interview({ interviewData, onFinish }) {
 
 
     return (
-        <div className="h-screen overflow-hidden bg-linear-to-br from-emerald-50 via-white to-teal-100 flex items-center justify-center p-4 sm:p-6">
-            <div className="w-full max-w-6xl h-full max-h-[90vh] bg-white rounded-3xl shadow-2xl border border-gray-200 flex flex-col lg:flex-row overflow-hidden">
+        <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-teal-100 flex items-center justify-center p-2 sm:p-4 md:p-6">
+            <div className="w-full max-w-6xl bg-white rounded-3xl shadow-2xl border border-gray-200 flex flex-col lg:flex-row overflow-hidden max-h-[95vh] lg:h-[85vh]">
 
                 {/* video section */}
-                <div className="w-full lg:w-[35%] bg-white flex flex-col items-center p-6 space-y-4 border-r border-gray-200 overflow-y-auto">
-                    <div className="w-full max-w-md rounded-2xl overflow-hidden shadow-xl flex-shrink-0">
+                <div className="w-full lg:w-[35%] bg-white flex flex-col items-center p-4 sm:p-6 space-y-4 border-b lg:border-b-0 lg:border-r border-gray-200 overflow-y-auto scrollbar-hide">
+                    <div className="w-full max-w-[200px] sm:max-w-md lg:max-w-full rounded-2xl overflow-hidden shadow-xl flex-shrink-0">
                         <video
                             src={videoSource}
                             key={videoSource}
@@ -428,23 +428,26 @@ function Step2Interview({ interviewData, onFinish }) {
                             muted
                             playsInline
                             preload="auto"
-                            className="w-full h-auto object-cover"
+                            className="w-full h-auto object-cover aspect-video lg:aspect-auto"
                         />
                     </div>
 
                     {/* subtitle area */}
                     {subtitle && (
-                        <div className="w-full max-w-md bg-gray-50 border border-gray-200 rounded-xl p-3 shadow-sm flex-shrink-0">
-                            <p className="text-gray-700 text-sm font-medium text-center leading-relaxed">{subtitle}</p>
+                        <div className="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 shadow-sm flex-shrink-0">
+                            <p className="text-gray-700 text-xs sm:text-sm font-medium text-center leading-relaxed italic">
+                                "{subtitle}"
+                            </p>
                         </div>
                     )}
 
-                    {/* timer area */}
-                    <div className="w-full max-w-md bg-white border border-gray-200 rounded-2xl shadow-md p-5 space-y-4 flex-shrink-0">
+                    {/* status & timer area - combined for mobile */}
+                    <div className="w-full bg-white border border-gray-200 rounded-2xl shadow-md p-4 sm:p-5 space-y-3 sm:space-y-4 flex-shrink-0">
                         <div className="flex justify-between items-center">
-                            <span className="text-xs text-gray-500 font-bold uppercase tracking-widest">Status</span>
+                            <span className="text-[10px] text-gray-400 font-bold uppercase tracking-widest">Status</span>
                             {isAIPlaying && (
-                                <span className="text-xs font-bold text-emerald-500 uppercase tracking-widest animate-pulse">
+                                <span className="text-[10px] font-bold text-emerald-500 uppercase tracking-widest animate-pulse flex items-center gap-1">
+                                    <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full"></div>
                                     AI Speaking
                                 </span>
                             )}
@@ -452,19 +455,19 @@ function Step2Interview({ interviewData, onFinish }) {
 
                         <div className="h-px bg-gray-100"></div>
 
-                        <div className="flex justify-center scale-90">
+                        <div className="flex justify-center scale-75 sm:scale-90 lg:scale-100 py-1 sm:py-2">
                             <Timer timeLeft={timeLeft} totalTime={currentQuestion?.timeLimit} />
                         </div>
 
                         <div className="h-px bg-gray-100"></div>
 
                         <div className="grid grid-cols-2 gap-4 text-center">
-                            <div>
-                                <span className="text-xl font-bold text-emerald-600">{currentIndex + 1}</span>
+                            <div className="bg-gray-50 rounded-xl py-2">
+                                <span className="text-lg sm:text-xl font-bold text-emerald-600">{currentIndex + 1}</span>
                                 <p className="text-[10px] text-gray-400 font-bold uppercase tracking-tighter">Current</p>
                             </div>
-                            <div>
-                                <span className="text-xl font-bold text-emerald-600">{questions.length}</span>
+                            <div className="bg-gray-50 rounded-xl py-2">
+                                <span className="text-lg sm:text-xl font-bold text-emerald-600">{questions.length}</span>
                                 <p className="text-[10px] text-gray-400 font-bold uppercase tracking-tighter">Total</p>
                             </div>
                         </div>
@@ -472,73 +475,90 @@ function Step2Interview({ interviewData, onFinish }) {
                 </div>
 
                 {/* Text Section */}
-                <div className="flex-1 flex flex-col p-6 sm:p-8 md:p-10 bg-white overflow-hidden">
-                    <div className="flex-shrink-0 mb-6">
-                        <h2 className="text-2xl font-bold text-gray-800 flex items-center gap-2">
+                <div className="flex-1 flex flex-col p-4 sm:p-6 lg:p-10 bg-white overflow-hidden">
+                    <div className="flex-shrink-0 mb-4 sm:mb-6">
+                        <h2 className="text-xl sm:text-2xl font-bold text-gray-800 flex items-center gap-2">
                             <span className="w-1.5 h-6 bg-emerald-500 rounded-full"></span>
                             AI Smart Interview
                         </h2>
                     </div>
 
-                    <div className="flex-1 flex flex-col min-h-0 space-y-6">
+                    <div className="flex-1 flex flex-col min-h-0 space-y-4 sm:space-y-6 overflow-y-auto scrollbar-hide">
                         {!isIntroPhase && currentQuestion && (
-                            <div className="flex-shrink-0 relative bg-emerald-50/50 p-6 rounded-3xl border border-emerald-100 shadow-sm">
-                                <p className="text-xs text-emerald-600/60 mb-2 font-bold uppercase tracking-wider">
+                            <div className="flex-shrink-0 relative bg-emerald-50/50 p-4 sm:p-6 rounded-2xl sm:rounded-3xl border border-emerald-100 shadow-sm">
+                                <p className="text-[10px] text-emerald-600/60 mb-2 font-bold uppercase tracking-wider">
                                     Question {currentIndex + 1} of {questions.length}
                                 </p>
-                                <div className="text-lg font-bold text-gray-800 leading-relaxed">
+                                <div className="text-base sm:text-lg font-bold text-gray-800 leading-relaxed">
                                     {currentQuestion.question}
                                 </div>
                             </div>
                         )}
 
                         <div className="flex-1 flex flex-col min-h-0 space-y-2">
-                            <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest ml-2">
-                                Your Response
-                            </label>
+                            <div className="flex justify-between items-center px-2">
+                                <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">
+                                    Your Response
+                                </label>
+                                {answer.length > 0 && (
+                                    <span className="text-[10px] text-gray-400 font-medium">
+                                        {answer.split(' ').length} words
+                                    </span>
+                                )}
+                            </div>
                             <textarea
                                 value={answer}
                                 onChange={(e) => setAnswer(e.target.value)}
-                                placeholder="Type your answer here..."
-                                className="flex-1 bg-gray-50/50 p-6 rounded-3xl resize-none outline-none border border-gray-100 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/5 transition-all text-gray-700 text-lg shadow-inner leading-relaxed"
+                                placeholder="Type your answer here or use the microphone..."
+                                className="flex-1 w-full p-4 sm:p-5 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-emerald-400 outline-none transition resize-none text-sm sm:text-base font-medium text-gray-700 bg-gray-50/30 min-h-[120px] lg:min-h-0"
                             />
                         </div>
 
-                        {!feedback ? (<div className="flex-shrink-0 flex items-center gap-4 pt-2">
-                            <motion.button
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
-                                // onClick={() => setIsMicOn(!isMicOn)}
-                                onClick={toggleMic}
-                                className={`w-14 h-14 flex items-center justify-center rounded-2xl shadow-xl transition-all ${isMicOn
-                                    ? "bg-emerald-500 text-white"
-                                    : "bg-gray-900 text-white"
-                                    }`}
-                            >
-                                {isMicOn ? <FaMicrophoneAlt size={24} /> : <FaMicrophoneSlash size={24} />}
-                            </motion.button>
-
-                            <motion.button
-                                onClick={submitAnswer}
-                                disabled={isSubmitting}
-                                whileHover={{ scale: 1.02 }}
-                                whileTap={{ scale: 0.98 }}
-                                className="flex-1 bg-gradient-to-r from-emerald-600 to-teal-500 text-white py-4 rounded-2xl shadow-xl hover:opacity-90 transition font-bold text-lg disabled:bg-gray-500"
-                            >
-                                {isSubmitting ? "Submitting..." : "Submit Answer"}
-                            </motion.button>
-                        </div>) : (
+                        {feedback && (
                             <motion.div
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                className="mt-6 bg-emerald-50 border border-emerald-200 p-5 rounded-2xl shadow-sm">
-                                <p className="text-emerald-700 font-medium mb-4">
-                                    {feedback}
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                className="flex-shrink-0 bg-gray-900 text-white p-4 sm:p-6 rounded-2xl sm:rounded-3xl shadow-lg"
+                            >
+                                <div className="flex items-center gap-2 mb-3">
+                                    <div className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse"></div>
+                                    <span className="text-[10px] font-bold uppercase tracking-widest text-emerald-400">AI Feedback</span>
+                                </div>
+                                <p className="text-xs sm:text-sm font-medium leading-relaxed italic opacity-90 text-gray-200 px-2 sm:px-4">
+                                    "{feedback}"
                                 </p>
+                            </motion.div>
+                        )}
+                    </div>
+
+                    <div className="flex-shrink-0 mt-6 flex items-center gap-3 sm:gap-4">
+                        <button
+                            onClick={toggleMic}
+                            className="p-3.5 sm:p-4 rounded-xl sm:rounded-2xl transition-all shadow-md bg-gray-900 text-white hover:bg-black"
+                        >
+                            {isMicOn ? <FaMicrophoneAlt size={20} /> : <FaMicrophoneSlash size={20} />}
+                        </button>
+
+                        <div className="flex-1">
+                            {!feedback ? (
+                                <button
+                                    onClick={submitAnswer}
+                                    disabled={!answer || isSubmitting}
+                                    className="w-full bg-gray-900 text-white py-3.5 sm:py-4 rounded-xl sm:rounded-2xl font-bold shadow-lg hover:bg-black transition disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base"
+                                >
+                                    {isSubmitting ? (
+                                        <div className="flex items-center justify-center gap-2">
+                                            <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                                            Submitting...
+                                        </div>
+                                    ) : "Submit Answer"}
+                                </button>
+                            ) : (
                                 <button
                                     onClick={handleNext}
                                     disabled={isSubmitting}
-                                    className="w-full bg-gradient-to-r from-emerald-600 to-teal-500 text-white py-3 rounded-xl shadow-md hover:opacity-90 transition flex items-center justify-center gap-1 disabled:opacity-50">
+                                    className="w-full bg-gradient-to-r from-emerald-600 to-teal-500 text-white py-3.5 sm:py-4 rounded-xl sm:rounded-2xl font-bold shadow-lg hover:opacity-90 transition flex items-center justify-center gap-2 disabled:opacity-50 text-sm sm:text-base"
+                                >
                                     {isSubmitting ? (
                                         "Finishing..."
                                     ) : currentIndex + 1 >= questions.length ? (
@@ -547,9 +567,8 @@ function Step2Interview({ interviewData, onFinish }) {
                                         <>Next Question <BsArrowRight size={18} /></>
                                     )}
                                 </button>
-
-                            </motion.div>
-                        )}
+                            )}
+                        </div>
                     </div>
                 </div>
             </div>

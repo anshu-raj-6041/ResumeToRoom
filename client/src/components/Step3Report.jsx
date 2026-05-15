@@ -139,25 +139,25 @@ function Step3Report({ report }) {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50/50 p-4 sm:p-6 md:p-10">
-      <div className="max-w-7xl mx-auto space-y-8">
+    <div className="min-h-screen bg-gray-50/50 p-3 sm:p-6 lg:p-10">
+      <div className="max-w-7xl mx-auto space-y-6 sm:space-y-8">
 
         {/* Header Section */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
-          <div className="flex items-start gap-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 sm:gap-6">
+          <div className="flex items-center sm:items-start gap-3 sm:gap-4">
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               onClick={() => navigate("/history")}
-              className="p-3 rounded-2xl bg-white shadow-sm border border-gray-100 text-gray-600 hover:text-emerald-600 transition-colors"
+              className="p-2.5 sm:p-3 rounded-xl sm:rounded-2xl bg-white shadow-sm border border-gray-100 text-gray-600 hover:text-emerald-600 transition-colors"
             >
-              <FaArrowLeft size={20} />
+              <FaArrowLeft size={18} />
             </motion.button>
             <div>
-              <h1 className="text-3xl font-extrabold text-gray-900 tracking-tight">
+              <h1 className="text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight">
                 Interview Analytics
               </h1>
-              <p className="text-gray-500 font-medium">
+              <p className="text-xs sm:text-sm text-gray-500 font-medium">
                 Detailed performance insights powered by AI
               </p>
             </div>
@@ -167,24 +167,24 @@ function Step3Report({ report }) {
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             onClick={downloadPDF}
-            className="flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-2xl shadow-lg shadow-emerald-200 transition-all font-bold"
+            className="flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-5 sm:px-6 py-2.5 sm:py-3 rounded-xl sm:rounded-2xl shadow-lg shadow-emerald-200 transition-all font-bold text-sm sm:text-base"
           >
-            <FaDownload /> Download PDF Report
+            <FaDownload className="text-xs sm:text-sm" /> Download PDF Report
           </motion.button>
         </div>
 
         {/* Main Dashboard Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8">
 
           {/* Left Column: Summary Cards */}
-          <div className="lg:col-span-4 space-y-8">
+          <div className="lg:col-span-4 space-y-6 sm:space-y-8">
             {/* Overall Score Card */}
-            <div className="bg-white rounded-3xl shadow-xl shadow-gray-200/50 p-8 border border-gray-50 text-center relative overflow-hidden">
+            <div className="bg-white rounded-3xl shadow-xl shadow-gray-200/50 p-6 sm:p-8 border border-gray-50 text-center relative overflow-hidden">
               <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-50 rounded-full -mr-16 -mt-16 opacity-50"></div>
-              <h3 className="text-gray-400 font-bold uppercase tracking-widest text-xs mb-8">
+              <h3 className="text-gray-400 font-bold uppercase tracking-widest text-[10px] sm:text-xs mb-6 sm:mb-8">
                 Overall Score
               </h3>
-              <div className="w-48 h-48 mx-auto mb-8 relative">
+              <div className="w-40 h-40 sm:w-48 sm:h-48 mx-auto mb-6 sm:mb-8 relative">
                 <CircularProgressbar
                   value={percentage}
                   text={`${finalScore}/10`}
@@ -197,31 +197,31 @@ function Step3Report({ report }) {
                   })}
                 />
               </div>
-              <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full ${performanceConfig.bg} ${performanceConfig.color} font-bold text-sm mb-4`}>
+              <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full ${performanceConfig.bg} ${performanceConfig.color} font-bold text-xs sm:text-sm mb-4`}>
                 {performanceConfig.icon}
                 {performanceConfig.text}
               </div>
-              <p className="text-gray-500 text-sm leading-relaxed px-4">
+              <p className="text-gray-500 text-xs sm:text-sm leading-relaxed px-2 sm:px-4 font-medium">
                 {performanceConfig.tagline}
               </p>
             </div>
 
             {/* Skill Metrics */}
-            <div className="grid grid-cols-1 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 gap-4">
               {skills.map((skill, index) => (
                 <div
                   key={skill.label}
-                  className={`${skill.bg} rounded-2xl p-5 border border-white shadow-sm flex items-center justify-between`}
+                  className={`${skill.bg} rounded-2xl p-4 sm:p-5 border border-white shadow-sm flex items-center justify-between lg:flex-row`}
                 >
                   <div>
-                    <p className={`text-xs font-bold uppercase tracking-wider ${skill.text} opacity-70 mb-1`}>
+                    <p className={`text-[10px] font-bold uppercase tracking-wider ${skill.text} opacity-70 mb-1`}>
                       {skill.label}
                     </p>
-                    <p className={`text-2xl font-black ${skill.text}`}>
-                      {skill.value}<span className="text-sm opacity-60">/10</span>
+                    <p className={`text-xl sm:text-2xl font-black ${skill.text}`}>
+                      {skill.value}<span className="text-xs opacity-60">/10</span>
                     </p>
                   </div>
-                  <div className="w-16 h-16 relative">
+                  <div className="w-12 h-12 sm:w-16 sm:h-16 relative">
                     <CircularProgressbar
                       value={skill.value > 1 ? skill.value * 10 : skill.value * 100}
                       styles={buildStyles({
@@ -230,7 +230,7 @@ function Step3Report({ report }) {
                       })}
                     />
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <span className={`text-[10px] font-bold ${skill.text}`}>
+                      <span className={`text-[8px] sm:text-[10px] font-bold ${skill.text}`}>
                         {skill.value}
                       </span>
                     </div>
@@ -241,20 +241,20 @@ function Step3Report({ report }) {
           </div>
 
           {/* Right Column: Trend & Detailed Question Report */}
-          <div className="lg:col-span-8 space-y-8">
+          <div className="lg:col-span-8 space-y-6 sm:space-y-8">
 
             {/* Trend Chart Card */}
-            <div className="bg-white rounded-3xl shadow-lg shadow-gray-200/50 p-6 sm:p-8 border border-gray-50">
-              <div className="flex items-center justify-between mb-8">
-                <h3 className="text-xl font-bold text-gray-800 flex items-center gap-2">
+            <div className="bg-white rounded-3xl shadow-lg shadow-gray-200/50 p-4 sm:p-8 border border-gray-50">
+              <div className="flex items-center justify-between mb-6 sm:mb-8">
+                <h3 className="text-lg sm:text-xl font-bold text-gray-800 flex items-center gap-2">
                   <FaChartLine className="text-emerald-500" />
                   Performance Trend
                 </h3>
-                <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">Score per Question</span>
+                <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest hidden sm:block">Score per Question</span>
               </div>
-              <div className="w-full relative min-h-[300px]">
-                <ResponsiveContainer width="100%" aspect={window.innerWidth < 640 ? 1 : 2} debounce={100}>
-                  <AreaChart data={questionScoreData} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
+              <div className="w-full relative min-h-[250px] sm:min-h-[300px]">
+                <ResponsiveContainer width="100%" aspect={window.innerWidth < 640 ? 1.2 : 2} debounce={100}>
+                  <AreaChart data={questionScoreData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
                     <defs>
                       <linearGradient id="colorScore" x1="0" y1="0" x2="0" y2="1">
                         <stop offset="5%" stopColor="#10b981" stopOpacity={0.3} />
@@ -266,23 +266,23 @@ function Step3Report({ report }) {
                       dataKey="name"
                       axisLine={false}
                       tickLine={false}
-                      tick={{ fill: '#9ca3af', fontSize: 12, fontWeight: 600 }}
+                      tick={{ fill: '#9ca3af', fontSize: 10, fontWeight: 600 }}
                       dy={10}
                     />
                     <YAxis
                       domain={[0, 10]}
                       axisLine={false}
                       tickLine={false}
-                      tick={{ fill: '#9ca3af', fontSize: 12, fontWeight: 600 }}
+                      tick={{ fill: '#9ca3af', fontSize: 10, fontWeight: 600 }}
                     />
                     <Tooltip
-                      contentStyle={{ borderRadius: '16px', border: 'none', boxShadow: '0 10px 15px -3px rgba(0,0,0,0.1)' }}
+                      contentStyle={{ borderRadius: '16px', border: 'none', boxShadow: '0 10px 15px -3px rgba(0,0,0,0.1)', fontSize: '12px' }}
                     />
                     <Area
                       type="monotone"
                       dataKey="score"
                       stroke="#10b981"
-                      strokeWidth={4}
+                      strokeWidth={3}
                       fillOpacity={1}
                       fill="url(#colorScore)"
                     />
@@ -292,13 +292,13 @@ function Step3Report({ report }) {
             </div>
 
             {/* Questions Analysis */}
-            <div className="space-y-6">
+            <div className="space-y-4 sm:space-y-6">
               <div className="flex items-center justify-between mb-2">
-                <h3 className="text-xl font-bold text-gray-800 flex items-center gap-2">
+                <h3 className="text-lg sm:text-xl font-bold text-gray-800 flex items-center gap-2">
                   <FaLightbulb className="text-amber-500" />
                   Question-wise Analysis
                 </h3>
-                <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">
+                <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">
                   {questionWiseScore.length} Questions
                 </span>
               </div>
@@ -308,30 +308,30 @@ function Step3Report({ report }) {
                   questionWiseScore.map((q, index) => (
                     <div
                       key={index}
-                      className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow group min-h-[100px]"
+                      className="bg-white rounded-2xl p-4 sm:p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow group"
                     >
-                      <div className="flex items-start justify-between gap-4 mb-4">
-                        <div className="flex items-start gap-4">
-                          <span className="w-8 h-8 rounded-lg bg-gray-900 text-white flex items-center justify-center font-bold text-sm shrink-0">
+                      <div className="flex flex-col sm:flex-row items-start justify-between gap-3 sm:gap-4 mb-4">
+                        <div className="flex items-start gap-3 sm:gap-4">
+                          <span className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-gray-900 text-white flex items-center justify-center font-bold text-xs sm:text-sm shrink-0">
                             {index + 1}
                           </span>
-                          <p className="text-gray-800 font-bold leading-relaxed">
+                          <p className="text-sm sm:text-base text-gray-800 font-bold leading-relaxed">
                             {q.question || q.questionText || "Question text not found"}
                           </p>
                         </div>
-                        <div className="text-right shrink-0">
-                          <p className="text-2xl font-black text-emerald-600">
-                            {q.score ?? 0}<span className="text-xs text-gray-400 font-bold">/10</span>
+                        <div className="sm:text-right shrink-0 ml-10 sm:ml-0">
+                          <p className="text-xl sm:text-2xl font-black text-emerald-600">
+                            {q.score ?? 0}<span className="text-[10px] text-gray-400 font-bold">/10</span>
                           </p>
                         </div>
                       </div>
 
                       {(q.feedback || q.aiFeedback) && (
-                        <div className="bg-gray-50 rounded-xl p-4 border border-gray-100 group-hover:bg-emerald-50/30 group-hover:border-emerald-100 transition-colors">
-                          <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2 flex items-center gap-1">
+                        <div className="bg-gray-50 rounded-xl p-3 sm:p-4 border border-gray-100 group-hover:bg-emerald-50/30 group-hover:border-emerald-100 transition-colors">
+                          <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1.5 flex items-center gap-1">
                             <FaCheckCircle className="text-emerald-500/50" /> AI Feedback
                           </p>
-                          <p className="text-gray-600 text-sm leading-relaxed italic">
+                          <p className="text-gray-600 text-xs sm:text-sm leading-relaxed italic font-medium">
                             "{q.feedback || q.aiFeedback}"
                           </p>
                         </div>
@@ -340,7 +340,7 @@ function Step3Report({ report }) {
                   ))
                 ) : (
                   <div className="bg-white rounded-2xl p-8 text-center border border-dashed border-gray-200">
-                    <p className="text-gray-500">No question analysis available for this interview.</p>
+                    <p className="text-sm text-gray-500 font-medium">No question analysis available for this interview.</p>
                   </div>
                 )}
               </div>
@@ -350,6 +350,7 @@ function Step3Report({ report }) {
         </div>
       </div>
     </div>
+  )
   );
 }
 
