@@ -34,12 +34,12 @@ function Auth({ isModel = false }) {
     };
 
     return (
-        <div className="w-full min-h-screen bg-[#f3f3f3] flex items-center justify-center px-4 sm:px-6 py-12 sm:py-20">
+        <div className={`w-full ${isModel ? "" : "min-h-screen bg-[#f3f3f3]"} flex items-center justify-center px-4 sm:px-6 py-12 sm:py-20`}>
             <motion.div
                 initial={{ opacity: 0, y: -40 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1.05 }}
-                className="w-full max-w-lg p-6 sm:p-12 rounded-[24px] sm:rounded-[32px] bg-white shadow-2xl border border-gray-200"
+                className={`w-full max-w-lg p-6 sm:p-12 rounded-[24px] sm:rounded-[32px] bg-white ${isModel ? "shadow-none border-none" : "shadow-2xl border border-gray-200"}`}
             >
                 <div className="flex items-center justify-center gap-2 sm:gap-3 mb-6">
                     <div className="bg-black text-white p-1.5 sm:p-2 rounded-lg">

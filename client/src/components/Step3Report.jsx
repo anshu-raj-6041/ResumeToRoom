@@ -351,7 +351,7 @@ function Step3Report({ report }) {
       </div>
     </div>
   )
-  );
+  
 }
 
 export default Step3Report;

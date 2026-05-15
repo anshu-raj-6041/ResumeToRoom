@@ -115,12 +115,12 @@ function Step1SetUp({ onStart }) {
             transition={{ duration: 0.6 }}
             className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200 px-4 py-8 sm:py-12"
         >
-            <div className="w-full max-w-6xl bg-white rounded-3xl shadow-2xl flex flex-col md:grid md:grid-cols-3 overflow-hidden">
+            <div className="w-full max-w-6xl bg-white rounded-3xl shadow-2xl flex flex-col md:grid md:grid-cols-5 overflow-hidden">
                 <motion.div
                     initial={{ x: window.innerWidth < 768 ? 0 : -80, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
                     transition={{ duration: 0.7 }}
-                    className="relative bg-gradient-to-br from-green-50 to-green-200 p-8 sm:p-12 flex flex-col justify-center">
+                    className="relative bg-gradient-to-br from-green-50 to-green-200 p-8 sm:p-12 flex flex-col justify-center md:col-span-2">
                     <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-4 sm:mb-6">
                         Start Your AI Interview
                     </h2>
@@ -168,7 +168,7 @@ function Step1SetUp({ onStart }) {
                 </motion.div>
 
                 {/* right box */}
-                <motion.div className="p-8 sm:p-12 flex flex-col justify-center bg-white">
+                <motion.div className="p-8 sm:p-12 flex flex-col justify-center bg-white md:col-span-3">
                     <h2 className="text-2xl font-bold text-gray-800 mb-6 sm:mb-8 flex items-center gap-2">
                         <span className="w-2 h-8 bg-green-500 rounded-full"></span>
                         Interview SetUp

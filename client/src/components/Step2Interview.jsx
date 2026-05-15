@@ -415,12 +415,12 @@ function Step2Interview({ interviewData, onFinish }) {
 
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-teal-100 flex items-center justify-center p-2 sm:p-4 md:p-6">
-            <div className="w-full max-w-6xl bg-white rounded-3xl shadow-2xl border border-gray-200 flex flex-col lg:flex-row overflow-hidden max-h-[95vh] lg:h-[85vh]">
+        <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-teal-100 flex items-center justify-center p-2 sm:p-4 md:p-6 py-6 sm:py-10">
+            <div className="w-full max-w-6xl bg-white rounded-3xl shadow-2xl border border-gray-200 flex flex-col lg:flex-row lg:h-[85vh] lg:overflow-hidden">
 
                 {/* video section */}
-                <div className="w-full lg:w-[35%] bg-white flex flex-col items-center p-4 sm:p-6 space-y-4 border-b lg:border-b-0 lg:border-r border-gray-200 overflow-y-auto scrollbar-hide">
-                    <div className="w-full max-w-[200px] sm:max-w-md lg:max-w-full rounded-2xl overflow-hidden shadow-xl flex-shrink-0">
+                <div className="w-full lg:w-[35%] bg-white flex flex-col items-center p-4 sm:p-6 space-y-4 border-b lg:border-b-0 lg:border-r border-gray-200 lg:overflow-y-auto scrollbar-hide">
+                    <div className="w-full max-w-sm lg:max-w-full rounded-2xl overflow-hidden shadow-xl flex-shrink-0">
                         <video
                             src={videoSource}
                             key={videoSource}
@@ -475,7 +475,7 @@ function Step2Interview({ interviewData, onFinish }) {
                 </div>
 
                 {/* Text Section */}
-                <div className="flex-1 flex flex-col p-4 sm:p-6 lg:p-10 bg-white overflow-hidden">
+                <div className="flex-1 flex flex-col p-4 sm:p-6 lg:p-10 bg-white min-h-0">
                     <div className="flex-shrink-0 mb-4 sm:mb-6">
                         <h2 className="text-xl sm:text-2xl font-bold text-gray-800 flex items-center gap-2">
                             <span className="w-1.5 h-6 bg-emerald-500 rounded-full"></span>
@@ -483,7 +483,7 @@ function Step2Interview({ interviewData, onFinish }) {
                         </h2>
                     </div>
 
-                    <div className="flex-1 flex flex-col min-h-0 space-y-4 sm:space-y-6 overflow-y-auto scrollbar-hide">
+                    <div className="flex-1 flex flex-col space-y-4 sm:space-y-6 lg:overflow-y-auto scrollbar-hide">
                         {!isIntroPhase && currentQuestion && (
                             <div className="flex-shrink-0 relative bg-emerald-50/50 p-4 sm:p-6 rounded-2xl sm:rounded-3xl border border-emerald-100 shadow-sm">
                                 <p className="text-[10px] text-emerald-600/60 mb-2 font-bold uppercase tracking-wider">
@@ -495,7 +495,7 @@ function Step2Interview({ interviewData, onFinish }) {
                             </div>
                         )}
 
-                        <div className="flex-1 flex flex-col min-h-0 space-y-2">
+                        <div className="flex flex-col space-y-2">
                             <div className="flex justify-between items-center px-2">
                                 <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">
                                     Your Response
@@ -510,7 +510,7 @@ function Step2Interview({ interviewData, onFinish }) {
                                 value={answer}
                                 onChange={(e) => setAnswer(e.target.value)}
                                 placeholder="Type your answer here or use the microphone..."
-                                className="flex-1 w-full p-4 sm:p-5 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-emerald-400 outline-none transition resize-none text-sm sm:text-base font-medium text-gray-700 bg-gray-50/30 min-h-[120px] lg:min-h-0"
+                                className="w-full p-4 sm:p-5 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-emerald-400 outline-none transition resize-none text-sm sm:text-base font-medium text-gray-700 bg-gray-50/30 min-h-[120px] sm:min-h-[150px] lg:min-h-0 lg:flex-1"
                             />
                         </div>
 

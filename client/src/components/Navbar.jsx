@@ -47,7 +47,7 @@ function Navbar() {
                 className='w-full max-w-6xl bg-white rounded-[20px] sm:rounded-[24px] shadow-sm border border-gray-200 px-4 sm:px-8 py-3 sm:py-4 flex justify-between items-center relative'>
                 <div className='flex items-center gap-2 sm:gap-3 cursor-pointer' onClick={() => navigate("/")}>
                     <div className='bg-black text-white p-1.5 sm:p-2 rounded-lg'>
-                        <BsRobot size={window.innerWidth < 640 ? 16 : 18} />
+                        <BsRobot className="text-[16px] sm:text-[18px]" />
 
                     </div>
                     <h1 className='font-semibold hidden sm:block text-base sm:text-lg'>ResumeToRoom</h1>
@@ -64,7 +64,7 @@ function Navbar() {
                             setShowUserPopup(false)
                         }}
                             className='flex items-center gap-1.5 sm:gap-2 bg-gray-100 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-sm sm:text-md hover:bg-gray-200 transition'>
-                            <BsCoin size={window.innerWidth < 640 ? 16 : 20} className="text-amber-500" />
+                            <BsCoin className="text-amber-500 text-[16px] sm:text-[20px]" />
                             <span className="font-bold">{userData?.credits || 0}</span>
 
                         </button>
